@@ -11,7 +11,7 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Read-And-Delete
+## What we will cover?
 
 1. Github
 2. Code Style Guide 
@@ -39,7 +39,7 @@ knit        : slidify::knit2slides
 - Be kind to your future self. Write readable and consistent code
 - Hadley Wickam's Style Guide (http://adv-r.had.co.nz/Style.html)
 
---
+---
 
 ## Data Importing
 
@@ -76,7 +76,8 @@ knit        : slidify::knit2slides
 - resources
 
 
--- .class #id 
+---
+
 
 ## Resources
 
