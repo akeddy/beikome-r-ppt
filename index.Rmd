@@ -74,7 +74,9 @@ knit        : slidify::knit2slides
 - Grammar of Graphics
 - Some standard plot recipes
 - resources
-
+  - manhattan plot
+  - correlation matrix plot
+  - QQ Plots
 
 ---
 
