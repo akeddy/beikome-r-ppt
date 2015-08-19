@@ -18,37 +18,59 @@ You don't have Databases SQL, JSON etc..
 2. `data.table::fread` for performance and consistency
 
 
-``` {r}
+
+```r
 library(readr)
+```
+
+```
+## Error in library(readr): there is no package called 'readr'
+```
+
+```r
 titles_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/titles.csv")
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "read_csv"
+```
+
+```r
 cast_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/cast.csv")
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "read_csv"
+```
+
+```r
 rel_dates_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/release_dates.csv")
+```
+
+```
+## Error in eval(expr, envir, enclos): could not find function "read_csv"
 ```
 
 That was easy right!
 
 
 
-```{r}
+
+```r
 str(rel_dates_df)
 ```
 
-This is the structure command to look at meta deta for your data. We need to understand common data types in R
+```
+## Error in str(rel_dates_df): object 'rel_dates_df' not found
+```
 
-- Atomic Vectors
-  - Boolean
-  - Numeric
-  
-- Matrices and array ()
-- Lists (trivial and common data strucure)
-- Factors
-- Dataframe
-
-
-```{r}
+```r
 library(ggplot2)
 qplot(rel_dates_df$year)
+```
 
+```
+## Error in eval(expr, envir, enclos): object 'rel_dates_df' not found
 ```
 
 
