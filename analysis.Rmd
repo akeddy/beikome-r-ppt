@@ -1,0 +1,38 @@
+---
+title: "Session 1"
+output: html_document
+---
+
+Note: This is written using Rmarkdown. You can produce HTML and Pdf documents using Rmarkdown and Rstudio
+
+## Read the data
+
+Common formats I know about in Biology - tsv, csv, txt, <some random extension of a tab delimited file>, xlsx/xls
+
+You don't have Databases SQL, JSON etc..
+
+###Two recommended packages 
+
+1. `readr` and `read_xl` for readability and concise
+2. `data.table::fread` for performance and consistency
+
+
+``` {r}
+library(readr)
+titles_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/titles.csv")
+cast_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/cast.csv")
+rel_dates_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/release_dates.csv")
+```
+
+That was easy right!
+
+
+
+```{r}
+str(rel_dates_df)
+
+library(ggplot2)
+qplot(rel_dates_df$year)
+```
+
+
