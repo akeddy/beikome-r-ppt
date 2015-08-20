@@ -3,6 +3,8 @@ title: "Session 1"
 output: html_document
 ---
 
+
+
 Note: This is written using Rmarkdown. You can produce HTML and Pdf documents using Rmarkdown and Rstudio. Think documentation, reports, ppt.
 
 The dataset we will work on today is a fun dataset. IMDB Movies. Please go ahead and download the data folder in your project directory. [Download from here](https://drive.google.com/open?id=0B9NCHJOuElCGfllXSFJsd2dFWVdabEdjQVJHSmpKaUVfZUw3VTM1NFMyT0Z6dlIzSVM1MGM)
@@ -20,6 +22,7 @@ You don't have Databases SQL, JSON etc..
 
 ``` {r}
 library(readr)
+library(stringr)
 titles_df = read_csv("data/titles.csv")
 cast_df = read_csv("data/cast.csv")
 rel_dates_df <- read_csv("data/release_dates.csv")
@@ -27,8 +30,8 @@ rel_dates_df <- read_csv("data/release_dates.csv")
 
 That was easy right! 
 
--Please note the `<-` and `=` assignments. Lets talk! But in practical use cases choose either.
--`<<-` parent scope and `<-` local scope
+- Please note the `<-` and `=` assignments. Lets talk! But in practical use cases choose either.
+- `<<-` parent scope and `<-` local scope
 
 
 
@@ -40,14 +43,43 @@ head(rel_dates_df)
 This is the structure command to look at meta deta for your data. We need to understand common data types in R
 
 - Atomic Vectors
-  - Boolean
-  - Numeric
+  - Boolean/Logical
+  - Numeric #double
+  - Integer #integer
+  - Character
+  - Complex! # 2+ 1i
   
-- Matrices and array ()
+  
+- Matrices and array #I personally did not use them so much
 - Lists (trivial and common data strucure)
 - Factors
+  - levels()
 - Dataframe
 
+
+```{r}
+
+
+
+
+
+```
+
+
+
+
+
+### How has the rate of movies being released changed over time?
+
+### What is the ratio of actor to actress in movies?
+
+### List all of the "Batman" movies from earliest to most recent.
+
+### How do countries rank based on number of releases?
+
+### How has the rate of movies being released changed over time in India <fill your country of choice>?
+
+### How many roles were there in '' <
 
 ```{r}
 library(ggplot2)
@@ -61,12 +93,6 @@ qplot(rel_dates_df$year)
 
 
 
-```{r}
-
-filter(titles_df, str_detect(title, "Terminator"))
-filter(titles_df, str_detect(title, "Batman"))
-
-```
 
 
 
