@@ -21,37 +21,22 @@ You don't have Databases SQL, JSON etc..
 
 ```r
 library(readr)
+titles_df = read_csv("data/titles.csv")
+cast_df = read_csv("data/cast.csv")
 ```
 
 ```
-## Error in library(readr): there is no package called 'readr'
-```
-
-```r
-titles_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/titles.csv")
-```
-
-```
-## Error in eval(expr, envir, enclos): could not find function "read_csv"
+## |================================================================================| 100%  186 MB
 ```
 
 ```r
-cast_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/cast.csv")
+rel_dates_df <- read_csv("data/release_dates.csv")
 ```
 
-```
-## Error in eval(expr, envir, enclos): could not find function "read_csv"
-```
+That was easy right! 
 
-```r
-rel_dates_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/release_dates.csv")
-```
-
-```
-## Error in eval(expr, envir, enclos): could not find function "read_csv"
-```
-
-That was easy right!
+-Please note the `<-` and `=` assignments. Lets talk! But in practical use cases choose either.
+-`<<-` parent scope and `<-` local scope
 
 
 
@@ -61,8 +46,39 @@ str(rel_dates_df)
 ```
 
 ```
-## Error in str(rel_dates_df): object 'rel_dates_df' not found
+## Classes 'tbl_df', 'tbl' and 'data.frame':	409012 obs. of  4 variables:
+##  $ title  : chr  "#73, Shaanthi Nivaasa" "#AnonOccupy: Bio of a Villain" "#Beings" "#Ewankosau saranghaeyo" ...
+##  $ year   : int  2007 2015 2015 2015 2014 2014 2014 2014 2015 1971 ...
+##  $ country: chr  "India" "USA" "Romania" "Philippines" ...
+##  $ date   : Date, format: "2007-06-15" "2015-11-05" ...
 ```
+
+```r
+head(rel_dates_df)
+```
+
+```
+##                           title year     country       date
+## 1         #73, Shaanthi Nivaasa 2007       India 2007-06-15
+## 2 #AnonOccupy: Bio of a Villain 2015         USA 2015-11-05
+## 3                       #Beings 2015     Romania 2015-01-29
+## 4        #Ewankosau saranghaeyo 2015 Philippines 2015-01-21
+## 5            #Nerealnaya lyubov 2014      Russia 2014-02-13
+## 6                        #Stuck 2014      Turkey 2014-07-01
+```
+
+This is the structure command to look at meta deta for your data. We need to understand common data types in R
+
+- Atomic Vectors
+  - Boolean
+  - Numeric
+  
+- Matrices and array ()
+- Lists (trivial and common data strucure)
+- Factors
+- Dataframe
+
+
 
 ```r
 library(ggplot2)
@@ -70,7 +86,9 @@ qplot(rel_dates_df$year)
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'rel_dates_df' not found
+## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
+
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 

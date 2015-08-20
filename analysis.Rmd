@@ -20,17 +20,21 @@ You don't have Databases SQL, JSON etc..
 
 ``` {r}
 library(readr)
-titles_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/titles.csv")
-cast_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/cast.csv")
-rel_dates_df = read_csv("~/code/personal/pycon-pandas-tutorial/data/release_dates.csv")
+titles_df = read_csv("data/titles.csv")
+cast_df = read_csv("data/cast.csv")
+rel_dates_df <- read_csv("data/release_dates.csv")
 ```
 
-That was easy right!
+That was easy right! 
+
+-Please note the `<-` and `=` assignments. Lets talk! But in practical use cases choose either.
+-`<<-` parent scope and `<-` local scope
 
 
 
 ```{r}
 str(rel_dates_df)
+head(rel_dates_df)
 ```
 
 This is the structure command to look at meta deta for your data. We need to understand common data types in R
@@ -50,5 +54,19 @@ library(ggplot2)
 qplot(rel_dates_df$year)
 
 ```
+
+
+
+
+
+
+
+```{r}
+
+filter(titles_df, str_detect(title, "Terminator"))
+filter(titles_df, str_detect(title, "Batman"))
+
+```
+
 
 

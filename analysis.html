@@ -60,43 +60,67 @@ You don&#39;t have Databases SQL, JSON etc..</p>
 </ol>
 
 <pre><code class="r">library(readr)
+titles_df = read_csv(&quot;data/titles.csv&quot;)
+cast_df = read_csv(&quot;data/cast.csv&quot;)
 </code></pre>
 
-<pre><code>## Error in library(readr): there is no package called &#39;readr&#39;
+<pre><code>## 
+|================================================================================| 100%  186 MB
 </code></pre>
 
-<pre><code class="r">titles_df = read_csv(&quot;~/code/personal/pycon-pandas-tutorial/data/titles.csv&quot;)
+<pre><code class="r">rel_dates_df &lt;- read_csv(&quot;data/release_dates.csv&quot;)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;read_csv&quot;
-</code></pre>
+<p>That was easy right! </p>
 
-<pre><code class="r">cast_df = read_csv(&quot;~/code/personal/pycon-pandas-tutorial/data/cast.csv&quot;)
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;read_csv&quot;
-</code></pre>
-
-<pre><code class="r">rel_dates_df = read_csv(&quot;~/code/personal/pycon-pandas-tutorial/data/release_dates.csv&quot;)
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;read_csv&quot;
-</code></pre>
-
-<p>That was easy right!</p>
+<p>-Please note the <code>&lt;-</code> and <code>=</code> assignments. Lets talk! But in practical use cases choose either.
+-<code>&lt;&lt;-</code> parent scope and <code>&lt;-</code> local scope</p>
 
 <pre><code class="r">str(rel_dates_df)
 </code></pre>
 
-<pre><code>## Error in str(rel_dates_df): object &#39;rel_dates_df&#39; not found
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    409012 obs. of  4 variables:
+##  $ title  : chr  &quot;#73, Shaanthi Nivaasa&quot; &quot;#AnonOccupy: Bio of a Villain&quot; &quot;#Beings&quot; &quot;#Ewankosau saranghaeyo&quot; ...
+##  $ year   : int  2007 2015 2015 2015 2014 2014 2014 2014 2015 1971 ...
+##  $ country: chr  &quot;India&quot; &quot;USA&quot; &quot;Romania&quot; &quot;Philippines&quot; ...
+##  $ date   : Date, format: &quot;2007-06-15&quot; &quot;2015-11-05&quot; ...
 </code></pre>
+
+<pre><code class="r">head(rel_dates_df)
+</code></pre>
+
+<pre><code>##                           title year     country       date
+## 1         #73, Shaanthi Nivaasa 2007       India 2007-06-15
+## 2 #AnonOccupy: Bio of a Villain 2015         USA 2015-11-05
+## 3                       #Beings 2015     Romania 2015-01-29
+## 4        #Ewankosau saranghaeyo 2015 Philippines 2015-01-21
+## 5            #Nerealnaya lyubov 2014      Russia 2014-02-13
+## 6                        #Stuck 2014      Turkey 2014-07-01
+</code></pre>
+
+<p>This is the structure command to look at meta deta for your data. We need to understand common data types in R</p>
+
+<ul>
+<li><p>Atomic Vectors</p>
+
+<ul>
+<li>Boolean</li>
+<li>Numeric</li>
+</ul></li>
+<li><p>Matrices and array ()</p></li>
+<li><p>Lists (trivial and common data strucure)</p></li>
+<li><p>Factors</p></li>
+<li><p>Dataframe</p></li>
+</ul>
 
 <pre><code class="r">library(ggplot2)
 qplot(rel_dates_df$year)
 </code></pre>
 
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;rel_dates_df&#39; not found
+<pre><code>## stat_bin: binwidth defaulted to range/30. Use &#39;binwidth = x&#39; to adjust this.
 </code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-3"> </p>
 
   </article>
   <!-- Presenter Notes -->
