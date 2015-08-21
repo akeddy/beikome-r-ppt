@@ -147,8 +147,24 @@ titles_df %>%
   #slice(1:10)
 ```
 
-### How do India and USA rank based on number of releases over years?
 
+
+# Plot the number of films that have been released each decade
+# over the history of cinema.
+
+```{r}
+rel_dates_df %>%
+  mutate(decade = as.factor(year %/% 10)) %>% # I havd to look at stackoverflow for remainder :P
+  group_by(decade) %>%
+  summarise(decade_count = n()) %>%
+  ggplot(aes(x=decade, y= decade_count)) +
+    geom_bar(stat="identity")
+
+```
+
+
+
+### How do India and USA rank based on number of releases over years?
 
 ```{r}
 library(ggplot2)
@@ -161,8 +177,6 @@ rel_dates_df %>%
     geom_bar(stat="identity") + 
     facet_wrap(~country)
 ```
-
-
 
 
 ### How has the rate of movies being released changed over time in India <fill your country of choice>?
