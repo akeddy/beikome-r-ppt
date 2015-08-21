@@ -125,19 +125,21 @@
   </hgroup>
   <article data-timings="">
     <ul>
-<li>plyr</li>
+<li>plyr #later</li>
 <li>dplyr</li>
-<li>Tbl</li>
+<li>Tbl_df</li>
 <li><p>5 verbs</p>
 
 <ul>
-<li>select</li>
+<li>slice</li>
 <li>filter</li>
-<li>arrange</li>
+<li>select</li>
+<li>arrange </li>
+<li>desc</li>
 <li>mutate</li>
 <li>summarise</li>
 </ul></li>
-<li><p>resources</p></li>
+<li><p>Grouped Operations</p></li>
 </ul>
 
   </article>
@@ -146,6 +148,25 @@
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
+    <h2>Data Analysis</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Merges
+
+<ul>
+<li>rbind, cbind</li>
+<li>left join, right join, outer join, inner join <a href="http://www.udel.edu/evelyn/SQL-Class2/joins.jpg">Visual Explaination</a></li>
+</ul></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">Dplyr Cheatsheet</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
     <h1>Lets Do it</h1>
   </hgroup>
   <article data-timings="">
@@ -154,7 +175,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
     <h2>Visualisation</h2>
   </hgroup>
@@ -163,14 +184,34 @@
 <li>ggplot2</li>
 <li>ggvis</li>
 <li>exploratory</li>
-<li>Grammar of Graphics</li>
-<li>Some standard plot recipes</li>
+<li>Grammar of Graphics
+
+<ul>
+<li>ggplot #data</li>
+<li>aes #mapping</li>
+<li>geom #Visual Geometry</li>
+<li>scales and coordinates</li>
+</ul></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/05/ggplot2-cheatsheet.pdf">ggplot Cheatsheet</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Visualisation</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
 <li>resources
 
 <ul>
-<li>manhattan plot</li>
-<li>correlation matrix plot</li>
-<li>QQ Plots</li>
+<li><a href="http://www.slideshare.net/idigdata/data-visualization-best-practices-2013">Best Practices for Visualisation Slidedeck</a></li>
+<li><a href="http://www.gettinggeneticsdone.com/2014/05/qqman-r-package-for-qq-and-manhattan-plots-for-gwas-results.html">manhattan and qq plot</a></li>
+<li><a href="https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html">correlation matrix plot</a></li>
+<li><a href="http://seananderson.ca/ggplot2-FISH554/">Good overall Tutorial</a></li>
 </ul></li>
 </ul>
 
@@ -178,7 +219,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-11" style="background:;">
   <hgroup>
     <h1>Lets Do it</h1>
   </hgroup>
@@ -188,22 +229,23 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-12" style="background:;">
   <hgroup>
-    <h2>Code Style Guide</h2>
+    <h2>Code Style</h2>
   </hgroup>
   <article data-timings="">
     <ul>
 <li>Creating code vs maintaining code</li>
 <li>Be kind to your future self. Write readable and consistent code</li>
 <li>Hadley Wickam&#39;s Style Guide (<a href="http://adv-r.had.co.nz/Style.html">http://adv-r.had.co.nz/Style.html</a>)</li>
+<li>Naming is complex. Also beware of collisions</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-11" style="background:;">
+<slide class="" id="slide-13" style="background:;">
   <hgroup>
     <h2>Resources</h2>
   </hgroup>
@@ -213,6 +255,7 @@
 <li>Coursera</li>
 <li>R-bloggers</li>
 <li>Rdocumentation.org</li>
+<li>Stackoverflow</li>
 </ul>
 
   </article>
@@ -261,32 +304,44 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Lets Do it'>
+        data-slide=7 title='Data Analysis'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Visualisation'>
+        data-slide=8 title='Lets Do it'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Lets Do it'>
+        data-slide=9 title='Visualisation'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Code Style Guide'>
+        data-slide=10 title='Visualisation'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Resources'>
+        data-slide=11 title='Lets Do it'>
          11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Code Style'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Resources'>
+         13
       </a>
     </li>
   </ul>

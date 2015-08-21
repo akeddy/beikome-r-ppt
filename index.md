@@ -55,17 +55,28 @@ knit        : slidify::knit2slides
 --- 
 ## Data Analysis
 
-- plyr
+- plyr #later
 - dplyr
-- Tbl
+- Tbl_df
 - 5 verbs
-  - select
-  - filter
-  - arrange
-  - mutate
-  - summarise
-  
-- resources
+  + slice
+  + filter
+  + select
+  + arrange 
+    - desc
+  + mutate
+  + summarise
+
+- Grouped Operations
+
+
+--- 
+## Data Analysis
+
+- Merges
+  - rbind, cbind
+  - left join, right join, outer join, inner join [Visual Explaination](http://www.udel.edu/evelyn/SQL-Class2/joins.jpg)
+- [Dplyr Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
 ---
 
@@ -80,13 +91,22 @@ knit        : slidify::knit2slides
 - ggvis
 - exploratory
 - Grammar of Graphics
-- Some standard plot recipes
+  + ggplot #data
+  + aes #mapping
+  + geom #Visual Geometry
+  + scales and coordinates
+- [ggplot Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/05/ggplot2-cheatsheet.pdf)
+
+
+---
+
+## Visualisation
+
 - resources
-  - manhattan plot
-  - correlation matrix plot
-  - QQ Plots
-
-
+  - [Best Practices for Visualisation Slidedeck](http://www.slideshare.net/idigdata/data-visualization-best-practices-2013)
+  - [manhattan and qq plot](http://www.gettinggeneticsdone.com/2014/05/qqman-r-package-for-qq-and-manhattan-plots-for-gwas-results.html)
+  - [correlation matrix plot](https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html)
+  - [Good overall Tutorial](http://seananderson.ca/ggplot2-FISH554/)
 
 ---
 
@@ -94,11 +114,12 @@ knit        : slidify::knit2slides
 
 ---
 
-## Code Style Guide
+## Code Style
 
 - Creating code vs maintaining code
 - Be kind to your future self. Write readable and consistent code
 - Hadley Wickam's Style Guide (http://adv-r.had.co.nz/Style.html)
+- Naming is complex. Also beware of collisions
 
 ----
 
@@ -108,6 +129,7 @@ knit        : slidify::knit2slides
 - Coursera
 - R-bloggers
 - Rdocumentation.org
+- Stackoverflow
 
 
 

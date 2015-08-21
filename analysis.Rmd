@@ -3,57 +3,77 @@ title: "Session 1"
 output: html_document
 ---
 
-Please install RStudio and R, if you dont have it. [Here](https://www.rstudio.com/products/rstudio/download/)
-
 Note: This document is written using Rmarkdown. You can produce HTML and Pdf documents using Rmarkdown and Rstudio. Think documentation, reports, ppt.
 
-The dataset we will work on today is a fun dataset. IMDB Movies. Please go ahead and download the data folder in your project directory. [Download from here](https://drive.google.com/open?id=0B9NCHJOuElCGfllXSFJsd2dFWVdabEdjQVJHSmpKaUVfZUw3VTM1NFMyT0Z6dlIzSVM1MGM)
+## Getting started instructions
+
+- Please install RStudio and R, if you dont have it. [Here](https://www.rstudio.com/products/rstudio/download/)
+
+- Go on Github. Fork my repo and clone that in your computer. 
+
+- The dataset we will work on today is a fun dataset. IMDB Movies. Please go ahead and download the data folder in your project directory. [Download from here](https://drive.google.com/open?id=0B9NCHJOuElCGfllXSFJsd2dFWVdabEdjQVJHSmpKaUVfZUw3VTM1NFMyT0Z6dlIzSVM1MGM)
+
+
+
+- Install all the packages
+
+```{r}
+# list.of.packages <- c("devtools","readr", "read_xl", "ggplot2", "dplyr", "data.table","rmarkdown", "stringr")
+# new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+# if(length(new.packages)) install.packages(new.packages)
+
+```
+
+### How to get help when after downloading a package?
+
+- Vignette
+- Github
+
 
 ## Read the data
 
-Common formats I know about in Biology - Flat files  - tsv, csv, txt, <some random extension of a tab delimited file>, xlsx/xls
-You don't have Databases SQL, JSON etc..
+Note:
+- Common formats I know about in Biology - Flat files  - tsv, csv, txt, *some random extension of a tab delimited file*, xlsx/xls
+
+- You don't have Databases SQL, JSON etc..
 
 ###Two recommended packages 
 
-1. `readr` and `read_xl` for readability and concise
-2. `data.table::fread` for performance and consistency
+1. [`readr`](https://github.com/hadley/readr) and [`readxl`](https://github.com/hadley/readxl) for readability and concise
+2. [`data.table::fread`](https://github.com/Rdatatable/data.table) for performance and consistency
 
 
 ``` {r}
 library(readr)
 library(data.table)
-titles_df = read_csv("data/titles.csv",n_max = 2)
-cast_df = read_csv("data/cast.csv", n_max = 2)
+titles_df = read_csv("data/titles.csv")
+cast_df = fread("data/cast.csv", sep = ",",header = T, verbose = T, stringsAsFactors = F)
 rel_dates_df <- read_csv("data/release_dates.csv")
 ```
 
 That was easy right! 
 
 - Please note the `<-` and `=` assignments. Lets talk! But in practical use cases choose either.
-- `<<-` parent scope and `<-` local scope
+- `<<-` parent scope and `<-` local scope. *what is scope?*
 
 
 
 ```{r}
 str(rel_dates_df)
-head(rel_dates_df)
 ```
 
 This is the structure command to look at meta deta for your data. We need to understand common data types in R
 
 - Atomic Vectors
-  - Boolean/Logical #R is case sensitive T, F, TRUE, FALSE
-  - Numeric #double
-  - Integer #integer
-  - Character
-  - Complex! # 2+ 1i
-  
-  
+  + Boolean/Logical #R is case sensitive T, F, TRUE, FALSE
+  + Numeric #double
+  + Integer #integer
+  + Character
+  + Complex! # 2+ 1i
 - Matrices and array #I personally did not use them so much
 - Lists (trivial and common data strucure)
 - Factors
-  - levels()
+  + levels()
 - Dataframe
 
 ### Q. How to know what class is the variable. 
@@ -81,7 +101,8 @@ This is quick sanity check of the data.
 
 # Lets Take a break.! [5 mins]
 
-
+------------------------------------------------------------------
+------------------------------------------------------------------
 
 ### List all of the "Batman" movies.
 
@@ -89,6 +110,7 @@ This is quick sanity check of the data.
 library(dplyr)
 library(stringr)
 batman_movies <- filter(titles_df, str_detect(title, "Batman"))
+batman_movies
 ```
 
 
@@ -104,7 +126,7 @@ arrange(batman_movies, year)[1]
 
 ```{r}
 batman_movies <- arrange(batman_movies, desc(year))
-#slice(batman_movies, 1:5)
+slice(batman_movies, 1:5)
 ```
 
 
@@ -143,14 +165,52 @@ Lets Take a break! [15 mins]
 titles_df %>%
   group_by(title) %>%
   summarise(title_count=n()) %>%
-  arrange(desc(title_count)) #%>%
-  #slice(1:10)
+  arrange(desc(title_count)) %>%
+  slice(1:10)
+```
+
+
+### What is the median of n for brad pitt and angelina jolly?
+
+```{r}
+
+cast_df %>%
+  filter(tolower(name)=='brad pitt' | tolower(name)=='angelina jolie')  %>%
+  group_by(name) %>%
+  summarise(median_n = median(n)) 
 ```
 
 
 
-# Plot the number of films that have been released each decade
-# over the history of cinema.
+
+
+
+
+
+
+### How has the rate of movies being released changed over time in India <fill your country of choice>?
+
+
+
+```{r}
+library(ggplot2)
+qplot(rel_dates_df$year)
+```
+
+
+*Note : Don't start with qplot. You will not be able to learn the grammer properly. Depends on your knowledge*
+
+
+##Historgram
+
+
+
+
+
+###Bar Graph
+
+
+#### Plot the number of films that have been released each decade over the history of cinema.
 
 ```{r}
 library(ggplot2)
@@ -165,7 +225,11 @@ rel_dates_df %>%
 
 
 
-### How do India and USA rank based on number of releases over years?
+
+###Line Graph
+
+
+#### How do India and USA rank based on number of releases over years?
 
 ```{r}
 
@@ -175,20 +239,26 @@ rel_dates_df %>%
   group_by(country, year) %>%
   summarise(annual_count = n()) %>%
   ggplot(aes(x = year, y = annual_count)) +
-    geom_bar(stat="identity") + 
+    geom_line(stat="identity") + 
     facet_wrap(~country)
 ```
 
 
-### How has the rate of movies being released changed over time in India <fill your country of choice>?
+
+### Scatter Plot
 
 
+#### Plot the n-values of the roles that Scarlett Johansson has played over her career.
 
 ```{r}
-library(ggplot2)
-qplot(rel_dates_df$year)
-
+cast_df %>%
+  filter(name=="Scarlett Johansson") %>%
+  ggplot(aes(x=year, y=n)) +
+  geom_point()
 ```
+
+
+
 
 
 
