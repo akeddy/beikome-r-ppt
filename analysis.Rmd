@@ -153,6 +153,7 @@ titles_df %>%
 # over the history of cinema.
 
 ```{r}
+library(ggplot2)
 rel_dates_df %>%
   mutate(decade = as.factor(year %/% 10)) %>% # I havd to look at stackoverflow for remainder :P
   group_by(decade) %>%
@@ -167,7 +168,7 @@ rel_dates_df %>%
 ### How do India and USA rank based on number of releases over years?
 
 ```{r}
-library(ggplot2)
+
 rel_dates_df %>%
   filter(tolower(country)=='india' | tolower(country)=='usa')  %>%
   mutate(country = as.factor(country)) %>%
