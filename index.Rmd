@@ -55,16 +55,22 @@ knit        : slidify::knit2slides
 --- 
 ## Data Analysis
 
-- plyr
+- plyr #later
 - dplyr
-- Tbl
+- Tbl_df
 - 5 verbs
-  - select
+  - slice
   - filter
-  - arrange
+  - select
+  - arrange 
+    - desc
   - mutate
   - summarise
-  
+
+- Grouped Operations
+- Merges
+  - rbind, cbind
+  - left join, right join, outer join, inner join [Visual Explaination](http://www.udel.edu/evelyn/SQL-Class2/joins.jpg)
 - resources
 
 ---
@@ -99,7 +105,7 @@ knit        : slidify::knit2slides
 - Creating code vs maintaining code
 - Be kind to your future self. Write readable and consistent code
 - Hadley Wickam's Style Guide (http://adv-r.had.co.nz/Style.html)
-
+- Naming is complex. Also beware of collisions
 ----
 
 ## Resources
@@ -108,6 +114,7 @@ knit        : slidify::knit2slides
 - Coursera
 - R-bloggers
 - Rdocumentation.org
+- Stackoverflow
 
 
 

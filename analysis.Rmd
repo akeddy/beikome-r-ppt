@@ -3,9 +3,9 @@ title: "Session 1"
 output: html_document
 ---
 
+Please install RStudio and R, if you dont have it. [Here](https://www.rstudio.com/products/rstudio/download/)
 
-
-Note: This is written using Rmarkdown. You can produce HTML and Pdf documents using Rmarkdown and Rstudio. Think documentation, reports, ppt.
+Note: This document is written using Rmarkdown. You can produce HTML and Pdf documents using Rmarkdown and Rstudio. Think documentation, reports, ppt.
 
 The dataset we will work on today is a fun dataset. IMDB Movies. Please go ahead and download the data folder in your project directory. [Download from here](https://drive.google.com/open?id=0B9NCHJOuElCGfllXSFJsd2dFWVdabEdjQVJHSmpKaUVfZUw3VTM1NFMyT0Z6dlIzSVM1MGM)
 
@@ -22,9 +22,9 @@ You don't have Databases SQL, JSON etc..
 
 ``` {r}
 library(readr)
-library(stringr)
-titles_df = read_csv("data/titles.csv")
-cast_df = read_csv("data/cast.csv")
+library(data.table)
+titles_df = read_csv("data/titles.csv",n_max = 2)
+cast_df = read_csv("data/cast.csv", n_max = 2)
 rel_dates_df <- read_csv("data/release_dates.csv")
 ```
 
@@ -43,7 +43,7 @@ head(rel_dates_df)
 This is the structure command to look at meta deta for your data. We need to understand common data types in R
 
 - Atomic Vectors
-  - Boolean/Logical
+  - Boolean/Logical #R is case sensitive T, F, TRUE, FALSE
   - Numeric #double
   - Integer #integer
   - Character
@@ -56,30 +56,118 @@ This is the structure command to look at meta deta for your data. We need to und
   - levels()
 - Dataframe
 
+### Q. How to know what class is the variable. 
 
 ```{r}
+class(rel_dates_df)
+class(rel_dates_df$title)
+```
+
+### What are some basic functions to check my variables, structure, dimensions, peek into my data?
+
+
+```{r}
+str(rel_dates_df)
+dim(cast_df)
+nrow(titles_df)
+ncol(rel_dates_df)
+names(cast_df)
+head(cast_df)
+tail(cast_df)
+```
+
+This is quick sanity check of the data. 
+
+
+# Lets Take a break.! [5 mins]
 
 
 
+### List all of the "Batman" movies.
+
+```{r}
+library(dplyr)
+library(stringr)
+batman_movies <- filter(titles_df, str_detect(title, "Batman"))
+```
 
 
+
+### Which is the earliest movie on batman?
+
+```{r}
+arrange(batman_movies, year)[1]
+```
+
+
+### Which are the most recent 5 movies on 'batman'?
+
+```{r}
+batman_movies <- arrange(batman_movies, desc(year))
+#slice(batman_movies, 1:5)
+```
+
+
+### How many movies were made from 1990 through 1999?
+```{r}
+nrow(filter(titles_df, year >= 1990, year <= 1999))
+nrow(filter(titles_df, year >= 1990 & year <= 1999))
+```
+
+
+
+### Which actors were there in 'Jurassic Park'<fill your fav movie> with non null values?
+
+```{r}
+jp_actors <- filter(cast_df, title == 'Jurassic Park', type == 'actor', is.na(n))
+select(jp_actors, name, character)
+```
+
+
+
+###Some practice questions for you 
+1. How many people have played a role called "The Dude"?
+2. How many people have played a role called "The Stranger"?
+3. How many roles has Tom Cruise played throughout his career?
+4. How many roles were avilable for actresses in the 1950s?
+5. How has the rate of movies being released changed over time?
+6. What is the ratio of actor to actress in movies?
+
+
+
+Lets Take a break! [15 mins]
+
+
+### What are the ten most common movie names of all time?
+```{r}
+titles_df %>%
+  group_by(title) %>%
+  summarise(title_count=n()) %>%
+  arrange(desc(title_count)) #%>%
+  #slice(1:10)
+```
+
+### How do India and USA rank based on number of releases over years?
+
+
+```{r}
+library(ggplot2)
+rel_dates_df %>%
+  filter(tolower(country)=='india' | tolower(country)=='usa')  %>%
+  mutate(country = as.factor(country)) %>%
+  group_by(country, year) %>%
+  summarise(annual_count = n()) %>%
+  ggplot(aes(x = year, y = annual_count)) +
+    geom_bar(stat="identity") + 
+    facet_wrap(~country)
 ```
 
 
 
 
-
-### How has the rate of movies being released changed over time?
-
-### What is the ratio of actor to actress in movies?
-
-### List all of the "Batman" movies from earliest to most recent.
-
-### How do countries rank based on number of releases?
-
 ### How has the rate of movies being released changed over time in India <fill your country of choice>?
 
-### How many roles were there in '' <
+
 
 ```{r}
 library(ggplot2)
